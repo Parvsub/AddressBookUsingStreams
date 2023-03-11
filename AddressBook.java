@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 //Address book program
 public class AddressBook extends ContactDetails{
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         AddressBook newPerson = new AddressBook();
         ArrayList<AddressBook> person = new ArrayList<>();
         System.out.println("Welcome to Address Book Program");

@@ -10,6 +10,8 @@ public class ContactDetails{
     int zip;
     long phoneNumber;
     String email = new String();
+    private String FirstName;
+    private String LastName;
 
     public String getEmail() {
         return email;
@@ -59,25 +61,25 @@ public class ContactDetails{
         this.address = address;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String LastName) {
+        this.lastName = LastName;
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
     }
 
     public String getFirstName() {
-        return firstName;
+        return FirstName;
     }
 
-    public ContactDetails(String firstName, String lastName, String address, String city, String state, int zip, int phoneNumber ){
-        this.firstName=firstName;
-        this.lastName=lastName;
+    public ContactDetails(String FirstName, String LastName, String address, String city, String state, int zip, int phoneNumber ){
+        this.FirstName=FirstName;
+        this.LastName=LastName;
         this.address=address;
         this.city=city;
         this.state=state;
@@ -89,8 +91,8 @@ public class ContactDetails{
         super();
     }
     @Override
-    public String toString() {
-        return "Employee [name=" + this.firstName +" "+ this.lastName + ", Address=" + this.address + ", City="
+     public String toString() {
+        return "Employee [name=" + this.FirstName +" "+ this.LastName + ", Address=" + this.address + ", City="
                 + this.city + ", state=" + this.state + ", zip=" + this.zip
                 + ", phone=" + this.phoneNumber + "]";
     }
