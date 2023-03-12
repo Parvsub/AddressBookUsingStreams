@@ -13,6 +13,9 @@ public class ContactDetails{
     private String FirstName;
     private String LastName;
 
+    public ContactDetails(String firstName, String lastName, String address, String city, String state, int zip, long phoneNumber, String email) {
+    }
+
     public String getEmail() {
         return email;
     }
@@ -25,8 +28,8 @@ public class ContactDetails{
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = Long.parseLong(phoneNumber);
     }
 
     public int getZip() {
