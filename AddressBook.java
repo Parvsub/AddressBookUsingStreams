@@ -1,5 +1,11 @@
 package AddressBookUsingStreams;
 
+import com.employeeserviceproblem.CreateEmployeeDetailsinFiles;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 //Address book program
@@ -136,6 +142,14 @@ public class AddressBook extends ContactDetails{
       person.stream()
               .sorted(Comparator.comparing(ContactDetails::getState))
               .forEach(System.out::println);
+   }
+   public void overWriteIntoFile() throws IOException{
+      FileWriter fileWritrObj =
+              new FileWriter("C:\\Users\\bodap\\OneDrive\\Desktop\\Praveen");
+      fileWritrObj.write("Sudheer1");
+
+      fileWritrObj.flush();//
+      fileWritrObj.close();
    }
 
    public void addContactsMain(AddressBook addressBookMain) {
