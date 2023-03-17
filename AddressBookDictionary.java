@@ -58,13 +58,6 @@ public class AddressBookDictionary {
                 .filter(city -> inputCity.equals(city.getCity()))
                 .forEach(element -> System.out.println(element));
     }
-    public  static void overWriteIntoFile() throws IOException {
-        Map<String, AddressBook> addressBookMainMap = new HashMap<>();
-        Properties properties = new Properties();
-        for (Map.Entry<String, AddressBook> entry : addressBookMainMap.entrySet())
-            properties.put(entry.getKey(), entry.getKey());
-    properties.store(new FileOutputStream("data.properties"),null);
-    }
 
     public static void main(String[] args) throws IOException {
         int flag = 0;
@@ -90,7 +83,6 @@ public class AddressBookDictionary {
                 case 6:
                     flag = 1;
 
-                  overWriteIntoFile();
             }
         }
     }
