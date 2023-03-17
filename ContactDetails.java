@@ -80,7 +80,7 @@ public class ContactDetails{
         return FirstName;
     }
 
-    public ContactDetails(String FirstName, String LastName, String address, String city, String state, int zip, int phoneNumber ){
+    public ContactDetails(String FirstName, String LastName, String address, String city, String state, int zip, int phoneNumber,String email ){
         this.FirstName=FirstName;
         this.LastName=LastName;
         this.address=address;
@@ -88,6 +88,7 @@ public class ContactDetails{
         this.state=state;
         this.zip=zip;
         this.phoneNumber=phoneNumber;
+        this.email = email;
 
     }
     public ContactDetails(){

@@ -1,18 +1,21 @@
 package AddressBookUsingStreams;
 
-import com.employeeserviceproblem.CreateEmployeeDetailsinFiles;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.*;
+
 
 //Address book program
 public class AddressBook extends ContactDetails{
    public static AddressBook newPerson = new AddressBook();
    public static ArrayList<ContactDetails> person = new ArrayList<>();
-   public static void add(){
+   public static File file = new File("Addressbook.csv");
+   public static File file2 = new File("AddressbookObj.csv");
+   public static ObjectInputStream objectInputStream = null;
+   public static ObjectOutputStream objectOutputStream = null;
+   public static OutputStreamWriter outputStreamWriter = null;
+   public static void add() throws IOException {
       Scanner scanner = new Scanner(System.in);
       System.out.println("Enter first name");
       String firstname = scanner.nextLine();
@@ -41,8 +44,16 @@ public class AddressBook extends ContactDetails{
       ContactDetails contactPerson = new ContactDetails(newPerson.getFirstName(),newPerson.getLastName(), newPerson.getAddress(), newPerson.getCity(), newPerson.getState(), newPerson.getZip(), newPerson.getPhoneNumber(),newPerson.getEmail());
       person.add(contactPerson);
       person.forEach(System.out::println);
-//        System.out.println(person);
-   }
+        objectOutputStream = new ObjectOutputStream(new FileOutputStream(file2));
+        objectOutputStream.writeObject(person);
+        objectOutputStream.close();
+        //Writing in readable csv
+        outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file));
+        outputStreamWriter.write(person.toString());
+        outputStreamWriter.close();
+        person.forEach(System.out::println);
+    }
+
 
    public static void modify(){
       Scanner scanner = new Scanner(System.in);
@@ -143,16 +154,18 @@ public class AddressBook extends ContactDetails{
               .sorted(Comparator.comparing(ContactDetails::getState))
               .forEach(System.out::println);
    }
-   public void overWriteIntoFile() throws IOException{
-      FileWriter fileWritrObj =
-              new FileWriter("C:\\Users\\bodap\\OneDrive\\Desktop\\Praveen");
-      fileWritrObj.write("Sudheer1");
 
-      fileWritrObj.flush();//
-      fileWritrObj.close();
+   public static void readFromfile() throws Exception {
+      if (file.isFile()) {
+         try {
+            ObjectInputStream objectStreamReader = new ObjectInputStream(new FileInputStream(file));
+            person = (ArrayList<ContactDetails>) objectStreamReader.readObject();
+         }catch (Exception e){}
+      }
    }
 
-   public void addContactsMain(AddressBook addressBookMain) {
+
+   public void addContactsMain(AddressBook addressBookMain) throws IOException {
       Scanner scanner = new Scanner(System.in);
       int flag = 0;
       int choice;

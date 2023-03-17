@@ -23,7 +23,7 @@ public class AddressBookDictionary {
             System.out.println(string);
         }
     }
-    public static void selectAddressBookMap(){      //Method to select address book and perform operations add,delete,update etc
+    public static void selectAddressBookMap() throws IOException {      //Method to select address book and perform operations add,delete,update etc
         display();
         System.out.println("Enter the name of address book you want to select");
         String addressBookName = scanner.next();
